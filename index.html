@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EcoPaz — Tranquilidad en el camino, certeza en casa</title>
+<meta name="description" content="Sistema de comunicación asíncrona offline-first para personas en ruta migratoria y sus familias en Guatemala.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/png" href="isotipo.png">
+<link rel="apple-touch-icon" href="isotipo.png">
+</head>
+<body>
+
+<header class="nav" id="top">
+  <div class="wrap nav__inner">
+    <a href="#top" class="brand" aria-label="EcoPaz, inicio">
+      <img src="isotipo.png" width="32" height="32" alt="" class="brand__logo">
+      <span>EcoPaz</span>
+    </a>
+    <button class="nav__toggle" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+      <span></span><span></span>
+    </button>
+    <nav id="menu" class="nav__links">
+      <a href="#problema">El problema</a>
+      <a href="#arquitectura">Cómo funciona</a>
+      <a href="#stack">Tecnología</a>
+      <a href="#etica">Ética</a>
+      <a href="https://github.com/Benjamin-Ruiz/ecopaz" class="nav__gh" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div class="hero__text">
+        <p class="status"><span class="status__dot"></span>Prototipo funcional validado · Sprint 1</p>
+        <h1>EcoPaz: Tranquilidad en el camino, <em>certeza en casa.</em></h1>
+        <p class="lead">Sistema de comunicación asíncrona <strong>offline-first</strong> diseñado para personas en ruta migratoria y sus familias en Guatemala, operando con consumo mínimo de datos y máxima privacidad.</p>
+        <div class="actions">
+          <a href="#arquitectura" class="btn btn--primary">Ver arquitectura técnica</a>
+          <a href="https://github.com/Benjamin-Ruiz/ecopaz" class="btn btn--ghost" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.34c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.22 1.88.87 2.34.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+            Repositorio
+          </a>
+        </div>
+      </div>
+
+      <!-- Phone mock: estado de la app -->
+      <div class="hero__visual" aria-hidden="true">
+        <div class="phone">
+          <div class="phone__bar"><span>V-03</span><span class="sig">Sin señal</span></div>
+          <p class="phone__label">¿Cómo estás?</p>
+          <button class="pulse" tabindex="-1"><span>Estoy bien</span></button>
+          <div class="phone__row"><span class="chip">Llegué</span><span class="chip">Sigo en camino</span></div>
+          <div class="queue">
+            <div class="queue__item"><span class="mono">08 B</span> En cola · guardado 42 ms</div>
+            <div class="queue__item queue__item--ok"><span class="mono">ACK</span> Entregado 06:12</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEMA -->
+  <section class="section section--light" id="problema">
+    <div class="wrap">
+      <p class="eyebrow">01 · El contexto real en la ruta</p>
+      <h2>La señal llega por segundos. La angustia en casa dura días.</h2>
+      <div class="two-col">
+        <p>En la ruta migratoria la cobertura es intermitente: tramos de 2G o 3G que aparecen unos segundos, saldo agotado y teléfonos con poca batería. Mientras tanto, en casa, la familia espera noticias sin saber si el silencio significa “no hay señal” o algo peor.</p>
+        <p>Esa incertidumbre tiene un costo psicosocial real. EcoPaz no busca ser otra app de chat: busca que el mensaje más importante —<em>estoy bien</em>— llegue aunque la conexión dure un instante.</p>
+      </div>
+
+      <div class="compare">
+        <div class="compare__col">
+          <h3>Mensajería tradicional</h3>
+          <ul>
+            <li>Necesita una sesión estable para el handshake, el cifrado y la sincronización.</li>
+            <li>Con 3 segundos de señal, el mensaje queda en “enviando” y se reintenta en segundo plano sin control.</li>
+            <li>Cientos de kilobytes por mensaje con metadatos, vistas previas y multimedia.</li>
+            <li>Requiere número telefónico y expone contactos.</li>
+          </ul>
+        </div>
+        <div class="compare__col compare__col--eco">
+          <h3>EcoPaz</h3>
+          <ul>
+            <li>El estado se guarda primero en el teléfono; la red es opcional.</li>
+            <li>Un <strong>ping de 8 bytes</strong> cabe de sobra en una ventana de 3 segundos.</li>
+            <li>Notas de voz de menos de 10 s, comprimidas, solo cuando hay oportunidad.</li>
+            <li>Solo alias. Sin número, sin nombre, sin ubicación.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bytes" aria-label="Comparación de tamaño de carga">
+        <div class="bytes__row"><span>Ping EcoPaz</span><div class="bytes__bar"><i style="--w:1.5%"></i></div><span class="mono">8 B</span></div>
+        <div class="bytes__row"><span>Mensaje de texto típico en apps de chat</span><div class="bytes__bar"><i class="muted" style="--w:100%"></i></div><span class="mono">~ kB</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARQUITECTURA -->
+  <section class="section section--dark" id="arquitectura">
+    <div class="wrap">
+      <p class="eyebrow eyebrow--light">02 · Arquitectura offline-first</p>
+      <h2>Tres pasos, ninguno depende de tener señal en ese momento.</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <span class="step__n">1</span>
+          <h3>Toca sin señal</h3>
+          <p>El toque se escribe en SQLite local en menos de <span class="mono">100 ms</span>. La persona ve confirmación inmediata y el mensaje queda en una cola persistente que sobrevive a reinicios y batería baja.</p>
+        </li>
+        <li class="step">
+          <span class="step__n">2</span>
+          <h3>Viaja ultraligero</h3>
+          <p><span class="mono">RedPorSondeo</span> comprueba activamente si hay red y, en cuanto aparece una ventana, envía pings de 8 bytes y notas de voz de menos de 10 s comprimidas. Si se corta, reintenta sin duplicar.</p>
+        </li>
+        <li class="step">
+          <span class="step__n">3</span>
+          <h3>La familia recibe paz</h3>
+          <p>El panel familiar muestra el último estado con hora local de Guatemala. Al confirmar la entrega (ACK), el servidor borra el mensaje de forma segura.</p>
+        </li>
+      </ol>
+
+      <div class="flow" aria-hidden="true">
+        <div class="flow__node">Teléfono<small>SQLite · cola</small></div>
+        <div class="flow__line"><span>ping 8 B</span></div>
+        <div class="flow__node">API Express<small>Cloudflare Tunnel</small></div>
+        <div class="flow__line"><span>ACK → purga</span></div>
+        <div class="flow__node flow__node--warm">Familia<small>Panel · hora local</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section class="section section--light" id="stack">
+    <div class="wrap">
+      <p class="eyebrow">03 · Pila tecnológica</p>
+      <h2>Herramientas elegidas por su ligereza, no por moda.</h2>
+      <div class="cards">
+        <article class="card">
+          <p class="card__tag mono">app/</p>
+          <h3>Flutter &amp; Dart</h3>
+          <p>App móvil Android con interfaz de botones grandes y textos simples, pensada para usarse con una mano y con prisa.</p>
+        </article>
+        <article class="card">
+          <p class="card__tag mono">.db</p>
+          <h3>SQLite</h3>
+          <p>Persistencia local en el teléfono y almacenamiento en el servidor. Sin servicios externos, sin dependencias en la nube.</p>
+        </article>
+        <article class="card">
+          <p class="card__tag mono">server/</p>
+          <h3>Node.js &amp; Express</h3>
+          <p>API backend ligera: recibe pings y notas de voz, entrega al panel familiar y purga tras el ACK.</p>
+        </article>
+        <article class="card">
+          <p class="card__tag mono">tunnel</p>
+          <h3>Cloudflare Tunnel</h3>
+          <p>Conectividad segura para el entorno de laboratorio sin abrir puertos ni exponer la máquina servidor.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ETICA -->
+  <section class="section section--ethic" id="etica">
+    <div class="wrap">
+      <p class="eyebrow">04 · Compromiso ético</p>
+      <h2>Privacidad por diseño: lo que no se recolecta no se puede filtrar.</h2>
+      <div class="pillars">
+        <div class="pillar">
+          <span class="pillar__big">0</span>
+          <h3>Cero rastreo GPS</h3>
+          <p>La app no solicita permiso de ubicación. Nunca sabemos dónde está nadie.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar__big mono">V-01…V-08</span>
+          <h3>Solo alias</h3>
+          <p>Cada participante es un alias. Ningún nombre, número telefónico ni dato personal real entra al sistema.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar__big mono">ACK</span>
+          <h3>Purga inmediata</h3>
+          <p>En cuanto la familia confirma la entrega, el mensaje se elimina del servidor. No hay historial que guardar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div>
+      <a href="#top" class="brand brand--light">
+        <img src="isotipo.png" width="24" height="24" alt="" class="brand__logo">
+        <span>EcoPaz</span>
+      </a>
+      <p class="footer__note">Prototipo académico privado. No es un servicio público ni recoge datos de personas reales.</p>
+    </div>
+    <div>
+      <h4>Universidad Rafael Landívar</h4>
+      <p>Campus San Alberto Hurtado S.J., Quetzaltenango<br>Facultad de Ingeniería en Sistemas<br>Curso de Ética Aplicada · RSU</p>
+    </div>
+    <div>
+      <h4>Integrantes</h4>
+      <p>Brayan Benjamín Ruiz Quinila<br>Diego Estuardo Joachin Orozco<br>Pablo José Lorenzo Arrivillaga</p>
+      <a href="https://github.com/Benjamin-Ruiz/ecopaz" target="_blank" rel="noopener" class="footer__link">github.com/Benjamin-Ruiz/ecopaz →</a>
+    </div>
+  </div>
+  <div class="wrap footer__base"><span>© <span id="year">2026</span> EcoPaz</span><span>Hecho en Xela, Guatemala</span></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
